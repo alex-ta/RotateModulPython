@@ -42,6 +42,9 @@ rotateRad(img,xRot,yRot,zRot,dist = 500,focal = 500):
 rotateDeg(img,xRot,yRot,zRot,dist = 500,focal = 500):
 ```
 
+Coordinate System shown in the image linked
+![alt text](https://i.stack.imgur.com/SitTF.png)
+
 ##### Further Reads
 * [C++ Code sample](http://stackoverflow.com/questions/6606891/opencv-virtually-camera-rotating-translating-for-birds-eye-view)
 * [A Vision Based Top-View Transformation Model for a Vehicle Parking Assistant](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3355419/)
