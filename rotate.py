@@ -39,25 +39,26 @@ def getDistanceMat(distance=500):
         [0, 0, 1, distance],
         [0, 0, 0, 1]]);
 #returns x rotated image
-def rotateX(img,angle, deg = 1):
+def rotateX(img,angle, deg = 1,focal = 500, dist = 500):
     if deg:
         angle = toRad(angle)
     h,w,depth = img.shape
-    transMat = np.dot(getFromOriginMat(w,h,focal),np.dot(getRotXMat(angle), getToOriginMat(w,h)))
+    transMat = np.dot(getFromOriginMat(w,h,focal),np.dot(getDistanceMat(dist), np.dot(getRotXMat(angle), getToOriginMat(w,h))))
     return cv.warpPerspective(img, transMat, (w,h), cv.INTER_CUBIC | cv.WARP_INVERSE_MAP);
 #returns y rotated image
-def rotateY(img,angle, deg = 1):
+def rotateY(img,angle,deg = 1,focal = 500, dist = 500):
     if deg:
         angle = toRad(angle)
+    print(angle)
     h,w,depth = img.shape
-    transMat = np.dot(getFromOriginMat(w,h,focal), np.dot(getRotXMat(angle), getToOriginMat(w,h)))
+    transMat = np.dot(getFromOriginMat(w,h,focal), np.dot(getDistanceMat(dist), np.dot(getRotYMat(angle), getToOriginMat(w,h))))
     return cv.warpPerspective(img, transMat, (w,h), cv.INTER_CUBIC | cv.WARP_INVERSE_MAP);
 #returns z rotated image
-def rotateZ(img,angle, deg = 1):
+def rotateZ(img,angle,deg = 1,focal = 500, dist = 500):
     if deg:
         angle = toRad(angle)
     h,w,depth = img.shape
-    transMat = np.dot(getFromOriginMat(w,h,focal), np.dot(getRotXMat(angle), getToOriginMat(w,h)))
+    transMat = np.dot(getFromOriginMat(w,h,focal), np.dot(getDistanceMat(dist), np.dot(getRotZMat(angle), getToOriginMat(w,h))))
     return cv.warpPerspective(img, transMat, (w,h), cv.INTER_CUBIC | cv.WARP_INVERSE_MAP);
 #returns radian rotated image
 def rotateRad(img,xRot,yRot,zRot,dist = 500,focal = 500):
